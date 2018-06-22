@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { GET_MESSAGES } from '../actions/messageActions';
 import '../App.css';
 import { Form, Button, Container } from 'semantic-ui-react';
-
 class AddMessage extends Component {
     state = {
         text: ''
     }
-
     handleOnChange = (event) => {
         const newMsg = event.target.value;
         this.setState({
@@ -24,11 +22,9 @@ class AddMessage extends Component {
         if (newMsg !== '') {
 
             const url = "https://kwitter-api.herokuapp.com/messages";
-
             const postRequestOptions = {
                 method: "POST",
                 headers: {
-                    
                     "Authorization": "Bearer " + this.props.token,
                     "Content-Type": "application/json"
                     
@@ -42,10 +38,13 @@ class AddMessage extends Component {
                 fetch('https://kwitter-api.herokuapp.com/messages')
                 .then(response => response.json())
                 .then(data => {
-                this.props.dispatch({
-                    type: GET_MESSAGES,
-                    messages: data
-                })
+
+                    this.props.dispatch({
+                        type: GET_MESSAGES,
+                        messages: data
+                    })
+                    //Force a render with a simulated state change
+                    this.setState({ state: this.state });
                 })
             }).catch(error => {
                 return error;
@@ -55,7 +54,6 @@ class AddMessage extends Component {
             });
         }
     }
-
     render() {
         return (
             <Container>

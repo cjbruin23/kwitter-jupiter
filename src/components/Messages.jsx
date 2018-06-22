@@ -4,7 +4,6 @@ import '../App.css';
 import AddMessage from './AddMessage';
 import { Feed,Icon, List } from 'semantic-ui-react'
 import { withRouter } from "react-router-dom";
-
 class Messages extends React.Component {
     render () {
         // Need to find away to reduce this
@@ -48,7 +47,6 @@ class Messages extends React.Component {
       )
     }
 }
-
 const mapStateToProps = (state) => {
     return {
       messages: state
@@ -56,3 +54,4 @@ const mapStateToProps = (state) => {
   }
   
 export default withRouter(connect (mapStateToProps)(Messages));
+

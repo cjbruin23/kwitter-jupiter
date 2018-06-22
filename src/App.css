@@ -7,10 +7,8 @@ body{
 
 textarea {
   width: 400px !important; 
-
   margin-top: 20px !important; 
 }
-
 #tweetBtn {
   margin-left: 300px !important;
 }
